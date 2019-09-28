@@ -13,6 +13,7 @@ public class NotaFiscalController
 	@Autowired
 	private NotaFiscalRepository rp;
 	private static final String LISTANOTAFISCAL = "listanotasfiscais";
+	private static final String NOTASFISCAIS = "notasfiscais";
 	
 	@RequestMapping("/")
 	public String index() 
@@ -23,8 +24,9 @@ public class NotaFiscalController
 	@RequestMapping("listanotasfiscais")
 	public String listaNotasFiscais(Model model) 
 	{
+		
 		Iterable<NotaFiscal> nf = rp.findAll();
-		model.addAttribute("notasfiscais", nf);
+		model.addAttribute(NOTASFISCAIS, nf);
 		return LISTANOTAFISCAL;
 	}
 
@@ -45,7 +47,7 @@ public class NotaFiscalController
 		NotaFiscal nf = new NotaFiscal(nome, impostoSelecionado.valorImposto().doubleValue(), valor);
 		rp.save(nf);
 		Iterable<NotaFiscal> notaFiscalLista = rp.findAll();
-		model.addAttribute("notasfiscais", notaFiscalLista);
+		model.addAttribute(NOTASFISCAIS, notaFiscalLista);
 		return LISTANOTAFISCAL;
 	}
 	
@@ -60,7 +62,7 @@ public class NotaFiscalController
 		}
 		
 		Iterable<NotaFiscal> notaFiscalLista = rp.findAll();
-		model.addAttribute("notasfiscais", notaFiscalLista);
+		model.addAttribute(NOTASFISCAIS, notaFiscalLista);
 		
 		return LISTANOTAFISCAL;
 	}
