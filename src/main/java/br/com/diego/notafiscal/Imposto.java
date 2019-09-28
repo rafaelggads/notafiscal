@@ -1,8 +1,8 @@
 package br.com.diego.notafiscal;
 
-public class Imposto 
+import java.math.BigDecimal;
+
+public abstract interface Imposto 
 {
-	public Imposto(String Tipo)
-	{
-	}
+	public  abstract BigDecimal valorImposto ();
 }
